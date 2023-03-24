@@ -46,8 +46,10 @@
     <Compile Include="BLO\BaseController.cs" />
     <Compile Include="BLO\PolizaBlo.cs" />
     <Compile Include="BLO\ClienteBlo.cs" />
+    <Compile Include="BLO\ValidacionBlo.cs" />
     <Compile Include="Interfaces\IPolizaBLO.cs" />
     <Compile Include="Interfaces\IClienteBLO.cs" />
+    <Compile Include="Interfaces\IValidadorBLO.cs" />
     <Compile Include="Mapper\PolizaMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

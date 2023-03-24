@@ -48,11 +48,36 @@ namespace polizas.BLO
         {
             var response = new GeneralReponse<string>();
             var id = 0;
-            var hoy = DateTime.Now;
-            if (Model.fechaInicio < hoy)
+          
+
+            Contexto contexto;
+
+            //Algoritmo para validar fecha correcta
+            contexto = new Contexto(new ValidacionFechaBlo());
+            string resultado = contexto.EjecutarAlgoritmo(Model.fechaInicio, Model.fechaFin);
+
+            contexto = new Contexto(new ValidacionFechaHoyBlo());
+            string resultado1 = contexto.EjecutarAlgoritmo(Model.fechaInicio, Model.fechaFin);
+
+            contexto = new Contexto(new ValidacionMesesFechaBlo());
+            string resultado2 = contexto.EjecutarAlgoritmo(Model.fechaInicio, Model.fechaFin);
+
+            if (resultado != "Ok")
             {
                 response.success = false;
-                response.message = "Error: debe ingresar una fecha superior a la fecha actual";
+                response.message = resultado;
+                return response;
+            }
+            else if(resultado1 != "Ok")
+            {
+                response.success = false;
+                response.message = resultado1;
+                return response;
+            }
+            else if (resultado2 != "Ok")
+            {
+                response.success = false;
+                response.message = resultado2;
                 return response;
             }
             try
